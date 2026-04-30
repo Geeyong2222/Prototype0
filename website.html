@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ふわマネ - 20代向け新感覚貯蓄アプリ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Variables (Reverted to Original Style but with Joyful Accents) ── */
+    :root {
+      --color-bg:         #f7f8fa;
+      --color-surface:    #ffffff;
+      --color-border:     #e5e7eb;
+      --color-text:       #111827;
+      --color-muted:      #6b7280;
+      --color-accent:     #4f46e5;
+      --color-accent-bg:  #eef2ff;
+      --color-success:    #059669;
+      --color-success-bg: #d1fae5;
+      --color-danger:     #dc2626;
+      --color-danger-bg:  #fee2e2;
+      
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --shadow: 0 4px 12px rgba(0,0,0,0.05);
+      
+      /* New Joyful Variables */
+      --color-joy: #D81B60;
+      --color-joy-bg: #FFF0F6;
+    }
+
+    /* ── Reset / Base ──────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    ul { list-style: none; }
+    strong { font-weight: 700; }
+
+    /* ── Layout ────────────────────────────────────────────────────────── */
+    .app-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .header-brand { display: flex; align-items: center; gap: 10px; }
+    .logo-icon {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, var(--color-accent), var(--color-joy));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+    }
+    .brand-name { font-size: 18px; font-weight: 800; color: var(--color-accent); }
+
+    .layout { display: flex; max-width: 1100px; margin: 0 auto; }
+
+    /* ── Sidebar ───────────────────────────────────────────────────────── */
+    .sidebar-nav {
+      width: 240px; flex-shrink: 0;
+      position: sticky; top: 64px; height: calc(100vh - 64px);
+      padding: 32px 16px;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .nav-btn {
+      width: 100%; display: flex; align-items: center; gap: 10px;
+      padding: 12px 16px; border-radius: 10px;
+      font-size: 14px; font-weight: 600; color: var(--color-muted);
+      text-align: left; transition: all 0.2s;
+    }
+    .nav-btn:hover { color: var(--color-text); background: var(--color-surface); transform: translateX(5px); }
+    .nav-btn.active { background: var(--color-accent-bg); color: var(--color-accent); }
+
+    /* ── Main Content ──────────────────────────────────────────────────── */
+    .main-content { flex: 1; padding: 40px 24px 100px; max-width: 800px; }
+    .section { display: none; animation: fadeIn 0.4s ease; }
+    .section.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Components ────────────────────────────────────────────────────── */
+    .card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+      border-color: var(--color-accent);
+    }
+
+    /* ── Dashboard Specific ────────────────────────────────────────────── */
+    .goal-card {
+      background: linear-gradient(135deg, #eef2ff 0%, #fce7f3 100%);
+      padding: 32px; border: none;
+    }
+    .goal-card::after { content: '✨'; position: absolute; top: 10px; right: 20px; font-size: 40px; opacity: 0.3; animation: float 4s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .goal-current { font-size: 42px; font-weight: 900; color: var(--color-accent); letter-spacing: -1px; }
+    .progress-bar { height: 12px; background: rgba(255,255,255,0.6); border-radius: 999px; overflow: hidden; margin: 16px 0; }
+    .progress-fill { height: 100%; background: var(--color-accent); border-radius: 999px; width: 64%; transition: width 1s ease; }
+
+    .rule-item {
+      display: flex; align-items: center; gap: 16px;
+      padding: 16px; border-radius: 12px; border: 1px solid var(--color-border);
+      margin-bottom: 12px; transition: all 0.2s;
+    }
+    .rule-item:hover { border-color: var(--color-joy); background: var(--color-joy-bg); }
+    .rule-icon { font-size: 24px; width: 44px; height: 44px; background: var(--color-accent-bg); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+
+    /* ── Original PRD Styles (Reverting) ─────────────────────────────── */
+    .concept-box { background: var(--color-accent-bg); border-radius: 16px; padding: 24px; margin-bottom: 24px; }
+    .concept-text { font-size: 20px; font-weight: 700; line-height: 1.7; }
+    .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+    .stat-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 14px; padding: 16px; text-align: center; }
+    .stat-value { font-size: 20px; font-weight: 700; color: var(--color-accent); }
+
+    /* ── Mobile Nav ────────────────────────────────────────────────────── */
+    .mobile-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--color-bg); border-top: 1px solid var(--color-border); padding: 8px; z-index: 1000; }
+    @media (max-width: 768px) {
+      .sidebar-nav { display: none; }
+      .main-content { margin-left: 0; padding: 24px 16px 100px; }
+      .mobile-nav { display: flex; justify-content: space-around; }
+      .stat-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Confetti ──────────────────────────────────────────────────────── */
+    .confetti { position: absolute; width: 8px; height: 8px; border-radius: 50%; pointer-events: none; z-index: 2000; }
+  </style>
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-brand">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 21C12 21 3 16 3 9.5C3 6.46243 5.46243 4 8.5 4C10.1473 4 11.6033 4.72145 12.5 5.86461C13.3967 4.72145 14.8527 4 16.5 4C19.5376 4 22 6.46243 22 9.5C22 16 13 21 12 21Z" fill="white"/>
+        </svg>
+      </div>
+      <span class="brand-name">ふわマネ</span>
+    </div>
+    <div class="text-muted text-xs">夢に、ふわマネ貯金</div>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar-nav">
+      <button class="nav-btn active" data-section="dashboard">📊 ダッシュボード</button>
+      <button class="nav-btn" data-section="summary">✨ サマリー</button>
+      <button class="nav-btn" data-section="target">👥 ターゲット</button>
+      <button class="nav-btn" data-section="solutions">💡 課題と解決策</button>
+      <button class="nav-btn" data-section="roadmap">🚀 ロードマップ</button>
+    </nav>
+
+    <main class="main-content">
+      
+      <!-- Dashboard (New Feature) -->
+      <section id="section-dashboard" class="section active">
+        <div class="card goal-card">
+          <p class="text-xs font-bold" style="color: var(--color-muted); margin-bottom: 8px;">APRIL GOAL 🎯</p>
+          <div style="display: flex; align-items: baseline; gap: 8px;">
+            <span class="goal-current">¥32,000</span>
+            <span class="text-muted font-bold">/ ¥50,000</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill"></div></div>
+          <p class="text-sm font-bold">目標まであと <strong>¥18,000</strong>！ ✨</p>
+        </div>
+
+        <h3 style="font-size: 18px; margin-bottom: 16px;">継続中の自分ルール</h3>
+        <div id="ruleList">
+          <!-- Rules will be rendered here -->
+        </div>
+        
+        <button class="card" style="width: 100%; border: 2px dashed var(--color-border); padding: 16px; color: var(--color-muted); font-weight: 700; text-align: center;" id="btnAddRule">
+          + 新しいルールを追加
+        </button>
+      </section>
+
+      <!-- Summary (Reverted from Index.html) -->
+      <section id="section-summary" class="section">
+        <div class="concept-box">
+          <p class="concept-text">
+            自分の価値観を大切にしたまま、<br />自然とお金が残っていく暮らし。
+          </p>
+        </div>
+        <div class="stat-grid">
+          <div class="stat-card"><p class="stat-value">ちかづく</p><p class="text-xs">サービス名</p></div>
+          <div class="stat-card"><p class="stat-value">20代</p><p class="text-xs">ターゲット</p></div>
+          <div class="stat-card"><p class="stat-value">フィンテック</p><p class="text-xs">カテゴリ</p></div>
+        </div>
+      </section>
+
+      <!-- Target (Reverted from Index.html) -->
+      <section id="section-target" class="section">
+        <div class="card">
+          <h3 style="margin-bottom: 12px;">ターゲット：20代一人暮らし</h3>
+          <p class="text-sm">支出判断の経験が薄く、無意識の支出が積み重なっている社会人。自分の成長や体験を諦めずに貯金したいというニーズに応えます。</p>
+        </div>
+      </section>
+
+      <!-- Solutions (Reverted from Index.html) -->
+      <section id="section-solutions" class="section">
+        <div class="card">
+          <h3 style="margin-bottom: 12px;">解決策：自分ルールの習慣化</h3>
+          <p class="text-sm">記憶に残らない支出を抽出し、立ち止まるためのリマインドを提供。我慢ではなく、コントロールする感覚を養います。</p>
+        </div>
+      </section>
+
+      <!-- Roadmap (Reverted from Index.html) -->
+      <section id="section-roadmap" class="section">
+        <div class="card">
+          <h3 style="margin-bottom: 12px;">ロードマップ</h3>
+          <p class="text-sm">Phase 1: MVP（支出分類・ルール設定）<br>Phase 2: エンゲージメント強化（通知連携）<br>Phase 3: AIパーソナライズ</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <nav class="mobile-nav">
+    <button class="nav-btn active" data-section="dashboard">📊</button>
+    <button class="nav-btn" data-section="summary">✨</button>
+    <button class="nav-btn" data-section="target">👥</button>
+    <button class="nav-btn" data-section="solutions">💡</button>
+    <button class="nav-btn" data-section="roadmap">🚀</button>
+  </nav>
+
+  <script>
+    // ── Navigation Logic ──────────────────────────────────
+    const navBtns = document.querySelectorAll('.nav-btn');
+    const sections = document.querySelectorAll('.section');
+
+    function switchSection(id) {
+      sections.forEach(s => s.classList.remove('active'));
+      navBtns.forEach(b => b.classList.remove('active'));
+      
+      document.getElementById(`section-${id}`).classList.add('active');
+      document.querySelectorAll(`[data-section="${id}"]`).forEach(b => b.classList.add('active'));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    navBtns.forEach(btn => {
+      btn.onclick = () => switchSection(btn.dataset.section);
+    });
+
+    // ── Rule Logic ────────────────────────────────────────
+    let rules = JSON.parse(localStorage.getItem('myRules')) || [
+      { id: 1, name: 'コンビニを週2回に抑える', amount: 8000, icon: '🏪' },
+      { id: 2, name: 'カフェ代を月5000円以内にする', amount: 5000, icon: '☕' }
+    ];
+
+    const ruleList = document.getElementById('ruleList');
+    
+    function renderRules() {
+      ruleList.innerHTML = rules.map(rule => `
+        <div class="rule-item" onclick="celebrate(event)">
+          <div class="rule-icon">${rule.icon}</div>
+          <div style="flex: 1;">
+            <p class="text-bold">${rule.name}</p>
+            <p class="text-xs" style="color: var(--color-joy);">月 ¥${rule.amount.toLocaleString()} 節約中</p>
+          </div>
+          <button style="color: var(--color-muted);" onclick="deleteRule(event, ${rule.id})">&times;</button>
+        </div>
+      `).join('');
+    }
+
+    function deleteRule(e, id) {
+      e.stopPropagation();
+      rules = rules.filter(r => r.id !== id);
+      localStorage.setItem('myRules', JSON.stringify(rules));
+      renderRules();
+    }
+
+    document.getElementById('btnAddRule').onclick = () => {
+      const name = prompt('ルールの名前は？');
+      const amount = prompt('月いくら節約する？');
+      if (name && amount) {
+        rules.push({ id: Date.now(), name, amount: parseInt(amount), icon: '✨' });
+        localStorage.setItem('myRules', JSON.stringify(rules));
+        renderRules();
+        triggerConfetti();
+      }
+    };
+
+    // ── Animations ────────────────────────────────────────
+    function celebrate(e) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      triggerConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    }
+
+    function triggerConfetti(originX = window.innerWidth/2, originY = window.innerHeight/2) {
+      const colors = ['#4f46e5', '#D81B60', '#F59E0B', '#10b981'];
+      for (let i = 0; i < 30; i++) {
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.background = colors[Math.floor(Math.random() * colors.length)];
+        c.style.left = originX + 'px';
+        c.style.top = originY + 'px';
+        const tx = (Math.random() - 0.5) * 400;
+        const ty = (Math.random() - 0.5) * 400;
+        c.animate([
+          { transform: 'translate(0, 0) scale(1) rotate(0deg)', opacity: 1 },
+          { transform: `translate(${tx}px, ${ty}px) scale(0) rotate(360deg)`, opacity: 0 }
+        ], { duration: 1000 + Math.random() * 1000, easing: 'cubic-bezier(0, .9, .57, 1)', fill: 'forwards' });
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 2000);
+      }
+    }
+
+    renderRules();
+  </script>
+</body>
+</html>

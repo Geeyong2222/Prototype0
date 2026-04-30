@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ふわマネ — PRD v1.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-brand">
+      <span class="brand-name">ふわマネ</span>
+      <span class="brand-badge">PRD v1.0</span>
+    </div>
+    <div class="header-right">
+      <i data-lucide="target" class="icon-muted"></i>
+      <span class="text-muted text-xs">製品要求仕様書</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- Sidebar nav (desktop) -->
+    <nav class="sidebar-nav" id="sidebarNav">
+      <ul>
+        <li><button class="nav-btn active" data-section="summary"><i data-lucide="star"></i>エグゼクティブサマリー</button></li>
+        <li><button class="nav-btn" data-section="target"><i data-lucide="users"></i>ターゲットユーザー</button></li>
+        <li><button class="nav-btn" data-section="solutions"><i data-lucide="lightbulb"></i>課題と解決策</button></li>
+        <li><button class="nav-btn" data-section="ux"><i data-lucide="smartphone"></i>ユーザー体験</button></li>
+        <li><button class="nav-btn" data-section="kpi"><i data-lucide="bar-chart-2"></i>成功指標</button></li>
+        <li><button class="nav-btn" data-section="roadmap"><i data-lucide="rocket"></i>ロードマップ</button></li>
+      </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main-content">
+
+      <!-- ── Summary ─────────────────────────────────── -->
+      <section id="section-summary" class="section active">
+        <div class="section-header">
+          <div class="section-header-top">
+            <span class="section-icon"><i data-lucide="star"></i></span>
+            <h2>エグゼクティブサマリー</h2>
+          </div>
+          <p class="section-subtitle ml-icon">製品の核心と提供価値を定義する</p>
+          <div class="section-underline ml-icon"></div>
+        </div>
+
+        <div class="concept-box">
+          <p class="concept-label">CONCEPT</p>
+          <p class="concept-text">
+            自分の価値観を大切にしたまま、<br />自然とお金が残っていく暮らし。<br />
+            <span class="concept-sub">我慢ではなく、コントロールができるようになる。</span>
+          </p>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <p class="stat-label">サービス名</p>
+            <p class="stat-value">ふわマネ</p>
+            <p class="stat-note">（貯蓄に近づく）</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">ターゲット</p>
+            <p class="stat-value">20代</p>
+            <p class="stat-note">一人暮らし社会人</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">カテゴリ</p>
+            <p class="stat-value">フィンテック</p>
+            <p class="stat-note">貯蓄サポートアプリ</p>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <p class="card-title">プロダクトの本質的な価値</p>
+          <p class="text-sm line-relaxed">
+            貯金に課題を感じている20代社会人は、意志が弱いから続かないのではなく、
+            <strong>日々の支出判断の積み重ねが負担になっているから</strong>だという洞察に基づきます。
+            本サービスは、ユーザーが大切にしている「価値のある消費」を尊重しながら、
+            記憶に残らない支出を抽出・可視化し、自ら節約ルールを立てる仕組みを提供します。
+          </p>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag tag-blue">支出可視化</span>
+          <span class="tag tag-green">自分ルール</span>
+          <span class="tag tag-red">衝動消費防止</span>
+          <span class="tag tag-purple">価値観尊重</span>
+        </div>
+      </section>
+
+      <!-- ── Target ──────────────────────────────────── -->
+      <section id="section-target" class="section">
+        <div class="section-header">
+          <div class="section-header-top">
+            <span class="section-icon"><i data-lucide="users"></i></span>
+            <h2>ターゲットユーザー</h2>
+          </div>
+          <p class="section-subtitle ml-icon">誰のために作るのかを明確に定義する</p>
+          <div class="section-underline ml-icon"></div>
+        </div>
+
+        <div class="tab-row">
+          <button class="tab-btn active" data-tab="overview" data-group="target">概要</button>
+          <button class="tab-btn" data-tab="persona" data-group="target">ペルソナ</button>
+          <button class="tab-btn" data-tab="research" data-group="target">リサーチデータ</button>
+        </div>
+
+        <div id="target-overview" class="tab-panel active">
+          <div class="card mb-4">
+            <p class="card-title">ターゲット概要</p>
+            <p class="text-sm line-relaxed">
+              支出判断の経験が薄い、<strong>20代一人暮らしの社会人</strong>。
+              自分の成長・体験・好きなことにお金を使いたいという価値観を持ちながらも、
+              無意識の支出が積み重なり、気づけば貯金が難しい状態に陥っている。
+            </p>
+          </div>
+          <div class="three-col-grid">
+            <div class="card">
+              <div class="emoji">😰</div>
+              <p class="card-title">思考の腐敗への不安</p>
+              <p class="text-xs line-relaxed text-muted">「節約しなきゃ」という焦りがあるが、何から手をつければいいかわからない</p>
+            </div>
+            <div class="card">
+              <div class="emoji">😔</div>
+              <p class="card-title">衝動消費の後悔</p>
+              <p class="text-xs line-relaxed text-muted">「また使いすぎた」という後悔を繰り返すが、事前に止める方法がない</p>
+            </div>
+            <div class="card">
+              <div class="emoji">🤔</div>
+              <p class="card-title">価値判断の難しさ</p>
+              <p class="text-xs line-relaxed text-muted">何が「良い消費」で何が「無駄な消費」なのか、自分では判断しにくい</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="target-persona" class="tab-panel">
+          <div class="card">
+            <div class="persona-header">
+              <div class="persona-avatar">👩‍💼</div>
+              <div>
+                <p class="persona-name">山田由奈 / 25歳</p>
+                <p class="text-sm text-muted">職業：デザイナー ／ 手取り：30万円 ／ 東京都一人暮らし</p>
+                <div class="tag-row mt-2">
+                  <span class="tag tag-blue">デザイナー</span>
+                  <span class="tag tag-purple">自己成長重視</span>
+                </div>
+              </div>
+            </div>
+            <div class="persona-rows">
+              <div class="persona-row">
+                <span class="persona-row-label">重視している消費</span>
+                <span>学び・デザイン活動・ジム・展覧会など、自分の表現の幅を広げる消費</span>
+              </div>
+              <div class="persona-row">
+                <span class="persona-row-label">悩みの種</span>
+                <span>コンビニ・カフェなど習慣的な小額支出が気づかぬうちに積み上がる</span>
+              </div>
+              <div class="persona-row">
+                <span class="persona-row-label">理想の状態</span>
+                <span>好きなことへの支出を諦めずに、自然と貯蓄が増えている</span>
+              </div>
+            </div>
+            <div class="persona-quote">
+              「自分の成長につながる支出は大切にしたいが、日常で重複する記憶に残らない支出が貯金を圧迫してしまう」
+            </div>
+          </div>
+        </div>
+
+        <div id="target-research" class="tab-panel">
+          <p class="text-xs text-muted mb-4">出典：20代の金銭感覚についての意識調査 2025</p>
+          <div class="bar-list">
+            <div class="bar-item">
+              <div class="bar-header">
+                <span>日常の楽しみにお金を優先的に使う（食費含む）</span>
+                <span class="bar-pct" style="color:var(--color-accent)">50.1%</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:50.1%;background:var(--color-accent)"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-header">
+                <span>衝動ショッピング経験あり</span>
+                <span class="bar-pct" style="color:var(--color-danger)">70%</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:70%;background:var(--color-danger)"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-header">
+                <span>貯金に不安を感じている</span>
+                <span class="bar-pct" style="color:var(--color-danger)">68.6%</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:68.6%;background:var(--color-danger)"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-header">
+                <span>支出は自分の興味・関心に影響される</span>
+                <span class="bar-pct" style="color:#a855f7">69%</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:69%;background:#a855f7"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-header">
+                <span>趣味・レジャーを優先</span>
+                <span class="bar-pct" style="color:var(--color-success)">36.9%</span>
+              </div>
+              <div class="bar-track"><div class="bar-fill" style="width:36.9%;background:var(--color-success)"></div></div>
+            </div>
+          </div>
+          <div class="info-note">
+            💡 無意識の支出平均：<strong>7.4万円/月</strong>。価値観に寄り添わない節約は続かないという示唆。
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Solutions ───────────────────────────────── -->
+      <section id="section-solutions" class="section">
+        <div class="section-header">
+          <div class="section-header-top">
+            <span class="section-icon"><i data-lucide="lightbulb"></i></span>
+            <h2>課題と解決策</h2>
+          </div>
+          <p class="section-subtitle ml-icon">3つの痛みに対応した3つのソリューション</p>
+          <div class="section-underline ml-icon"></div>
+        </div>
+
+        <div class="solutions-list">
+          <div class="solution-card">
+            <div class="pain-box">
+              <div class="pain-label"><i data-lucide="alert-circle"></i> Painpoint 1</div>
+              <p class="text-sm">印象のない支出を繰り返してしまう</p>
+            </div>
+            <div class="arrow-row"><i data-lucide="arrow-right"></i></div>
+            <div class="solution-body">
+              <div class="solution-label"><i data-lucide="check-circle"></i> Solution 1</div>
+              <p class="solution-title">無駄消費を気づかせる</p>
+              <p class="text-xs text-muted line-relaxed">記憶に残らない支出を可視化し、「どこを見直すべきか」を自動で明確化する</p>
+            </div>
+          </div>
+          <div class="solution-card">
+            <div class="pain-box">
+              <div class="pain-label"><i data-lucide="alert-circle"></i> Painpoint 2</div>
+              <p class="text-sm">衝動消費をしてから後悔する</p>
+            </div>
+            <div class="arrow-row"><i data-lucide="arrow-right"></i></div>
+            <div class="solution-body">
+              <div class="solution-label"><i data-lucide="check-circle"></i> Solution 2</div>
+              <p class="solution-title">衝動消費を立ち止まらせる</p>
+              <p class="text-xs text-muted line-relaxed">日常で「自分ルール」をリマインドし、購入前に立ち止まる仕組みを提供する</p>
+            </div>
+          </div>
+          <div class="solution-card">
+            <div class="pain-box">
+              <div class="pain-label"><i data-lucide="alert-circle"></i> Painpoint 3</div>
+              <p class="text-sm">支出判断がうまくできない</p>
+            </div>
+            <div class="arrow-row"><i data-lucide="arrow-right"></i></div>
+            <div class="solution-body">
+              <div class="solution-label"><i data-lucide="check-circle"></i> Solution 3</div>
+              <p class="solution-title">自分の価値観を守る</p>
+              <p class="text-xs text-muted line-relaxed">ユーザーにとって意味のある消費は肯定し、削るべき消費だけを提示する</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accent-box text-center">
+          <p class="text-xs font-semibold accent mb-2">3つのソリューションが統合して生み出す価値</p>
+          <p class="text-base font-bold">
+            日々の支出判断の負担を減らすことで、<br />落ち着いてお金と向き合える状態をつくる。
+          </p>
+        </div>
+      </section>
+
+      <!-- ── UX ──────────────────────────────────────── -->
+      <section id="section-ux" class="section">
+        <div class="section-header">
+          <div class="section-header-top">
+            <span class="section-icon"><i data-lucide="smartphone"></i></span>
+            <h2>ユーザー体験（UX）</h2>
+          </div>
+          <p class="section-subtitle ml-icon">アプリを通じたユーザーの旅</p>
+          <div class="section-underline ml-icon"></div>
+        </div>
+
+        <div class="step-tabs" id="stepTabs">
+          <button class="step-tab-btn active" data-step="0">01 目標設定</button>
+          <button class="step-tab-btn" data-step="1">02 支出分類</button>
+          <button class="step-tab-btn" data-step="2">03 振り返り発見</button>
+          <button class="step-tab-btn" data-step="3">04 自分ルール作成</button>
+          <button class="step-tab-btn" data-step="4">05 継続・達成</button>
+        </div>
+
+        <div class="step-display card mb-6" id="stepDisplay">
+          <p class="step-num">01</p>
+          <p class="step-title">目標設定</p>
+          <p class="text-sm text-muted line-relaxed">貯蓄額と期限を入力。アプリが月の許容支出を自動計算する</p>
+        </div>
+
+        <p class="text-sm font-semibold mb-3">体験品質の基準</p>
+        <div class="accordion-list">
+          <div class="accordion-item">
+            <button class="accordion-btn">
+              <span>ビジュアル・トーン — 親しみやすく温かいUI</span>
+              <i data-lucide="chevron-down" class="accordion-icon"></i>
+            </button>
+            <div class="accordion-body">
+              硬い「金庫・節約アプリ」感を排除。グラフやイラストに柔らかさを持たせ、「お金と向き合うのが怖くない」デザインを優先する。
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-btn">
+              <span>価値観の肯定 — 「我慢させない」メッセージ設計</span>
+              <i data-lucide="chevron-down" class="accordion-icon"></i>
+            </button>
+            <div class="accordion-body">
+              ジムや展覧会などの支出には「✓ あなたの大切な消費です」と表示し、削減提案は無駄消費のみにとどめる。ユーザーが責められている感覚にならないUXライティングを徹底する。
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-btn">
+              <span>自分ルールの安心感 — 「決めるのは自分」</span>
+              <i data-lucide="chevron-down" class="accordion-icon"></i>
+            </button>
+            <div class="accordion-body">
+              「コンビニを減らすべきです」ではなく「コンビニよりスーパーに変えると +¥10,000 節約できます。ルールを決めますか？」という提案型フロー。強制しない。
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-btn">
+              <span>継続のしやすさ — 3秒でわかるダッシュボード</span>
+              <i data-lucide="chevron-down" class="accordion-icon"></i>
+            </button>
+            <div class="accordion-body">
+              毎日アプリを開いた際に「今月の状況」が3秒以内で把握できるホーム画面設計。情報過多にならないシンプルな構造。
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── KPI ─────────────────────────────────────── -->
+      <section id="section-kpi" class="section">
+        <div class="section-header">
+          <div class="section-header-top">
+            <span class="section-icon"><i data-lucide="bar-chart-2"></i></span>
+            <h2>成功指標（KPI）</h2>
+          </div>
+          <p class="section-subtitle ml-icon">何をもって成功とみなすかを定義する</p>
+          <div class="section-underline ml-icon"></div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-header" style="color:var(--color-accent)">
+              <i data-lucide="trending-up"></i>
+              <span>貯蓄達成率</span>
+            </div>
+            <p class="kpi-target" style="color:var(--color-accent)">目標金額の80%以上を3ヶ月以内に達成</p>
+            <p class="text-xs text-muted line-relaxed">設定した貯蓄目標に対する実績の達成割合</p>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header" style="color:var(--color-success)">
+              <i data-lucide="trending-up"></i>
+              <span>自分ルール継続率</span>
+            </div>
+            <p class="kpi-target" style="color:var(--color-success)">30日後の継続率 70%以上</p>
+            <p class="text-xs text-muted line-relaxed">設定した節約ルールを翌月も維持しているユーザーの割合</p>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header" style="color:var(--color-danger)">
+              <i data-lucide="trending-up"></i>
+              <span>衝動消費の削減</span>
+            </div>
+            <p class="kpi-target" style="color:var(--color-danger)">利用前比 -30%以上</p>
+            <p class="text-xs text-muted line-relaxed">アプリ導入後、記憶に残らない支出カテゴリの月次削減率</p>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header" style="color:#a855f7">
+              <i data-lucide="trending-up"></i>
+              <span>NPS（推奨度）</span>
+            </div>
+            <p class="kpi-target" style="color:#a855f7">40以上</p>
+            <p class="text-xs text-muted line-relaxed">友人や同僚にアプリを勧めたいかを測るネットプロモータースコア</p>
+          </div>
+        </div>
+
+        <div class="card mt-6">
+          <p class="card-title">🎯 北極星指標（North Star Metric）</p>
+          <p class="font-bold accent mb-1">「ユーザーが設定した貯蓄目標を達成した月の数」</p>
+          <p class="text-xs text-muted line-relaxed">
+            単なる利用継続ではなく、実際に貯蓄が進んでいるかを最重要指標とする。
+            ユーザーの財務的な成功がプロダクトの価値と直結していることを示す。
+          </p>
+        </div>
+      </section>
+
+      <!-- ── Roadmap ──────────────────────────────────── -->
+      <section id="section-roadmap" class="section">
+        <div class="section-header">
+          <div class="section-header-top">
+            <span class="section-icon"><i data-lucide="rocket"></i></span>
+            <h2>ロードマップ</h2>
+          </div>
+          <p class="section-subtitle ml-icon">プロダクトの成長ステップ</p>
+          <div class="section-underline ml-icon"></div>
+        </div>
+
+        <div class="roadmap-list">
+          <!-- Phase 1 -->
+          <div class="roadmap-card">
+            <div class="roadmap-card-header">
+              <div>
+                <p class="font-bold text-sm">Phase 1 — MVP</p>
+                <p class="text-xs text-muted">2025 Q2〜Q3</p>
+              </div>
+              <span class="status-badge status-active">進行中</span>
+            </div>
+            <ul class="roadmap-items">
+              <li><i data-lucide="check-circle" style="color:var(--color-accent)"></i>支出カテゴリ分類（振り返り消費・価値生活費・固定生活費・先取り貯蓄）</li>
+              <li><i data-lucide="check-circle" style="color:var(--color-accent)"></i>月次支出ダッシュボード（ドーナツグラフ）</li>
+              <li><i data-lucide="check-circle" style="color:var(--color-accent)"></i>振り返り消費の可視化リスト</li>
+              <li><i data-lucide="check-circle" style="color:var(--color-accent)"></i>自分ルール設定機能（回数上限・置き換え提案）</li>
+            </ul>
+          </div>
+          <!-- Phase 2 -->
+          <div class="roadmap-card">
+            <div class="roadmap-card-header">
+              <div>
+                <p class="font-bold text-sm">Phase 2 — エンゲージメント強化</p>
+                <p class="text-xs text-muted">2025 Q4</p>
+              </div>
+              <span class="status-badge status-future">予定</span>
+            </div>
+            <ul class="roadmap-items">
+              <li><i data-lucide="check-circle" style="color:var(--color-muted)"></i>衝動消費ストップ通知（GPS連携 or 時間帯別）</li>
+              <li><i data-lucide="check-circle" style="color:var(--color-muted)"></i>節約シミュレーター（ルール変更で貯蓄額がどう変わるか）</li>
+              <li><i data-lucide="check-circle" style="color:var(--color-muted)"></i>月次振り返りレポート（PDF出力）</li>
+            </ul>
+          </div>
+          <!-- Phase 3 -->
+          <div class="roadmap-card">
+            <div class="roadmap-card-header">
+              <div>
+                <p class="font-bold text-sm">Phase 3 — AI パーソナライズ</p>
+                <p class="text-xs text-muted">2026 Q1〜</p>
+              </div>
+              <span class="status-badge status-future">予定</span>
+            </div>
+            <ul class="roadmap-items">
+              <li><i data-lucide="check-circle" style="color:var(--color-muted)"></i>AIによる「価値のある消費」自動判定</li>
+              <li><i data-lucide="check-circle" style="color:var(--color-muted)"></i>パートナーとの家計共有機能</li>
+              <li><i data-lucide="check-circle" style="color:var(--color-muted)"></i>銀行・クレジットカード連携（自動インポート）</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accent-box mt-6">
+          <p class="text-sm font-semibold accent mb-2">将来の展望</p>
+          <ul class="future-list">
+            <li><i data-lucide="arrow-right" style="color:var(--color-accent)"></i>パートナーとの家計共有・可視化機能</li>
+            <li><i data-lucide="arrow-right" style="color:var(--color-accent)"></i>AI による「腐りかけ支出」の整理・削除提案</li>
+            <li><i data-lucide="arrow-right" style="color:var(--color-accent)"></i>銀行・クレジットカード自動インポート連携</li>
+            <li><i data-lucide="arrow-right" style="color:var(--color-accent)"></i>Notion / 家計簿アプリとのマルチプラットフォーム連携</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Mobile bottom nav -->
+  <nav class="mobile-nav">
+    <button class="mobile-nav-btn active" data-section="summary"><i data-lucide="star"></i><span>サマリー</span></button>
+    <button class="mobile-nav-btn" data-section="target"><i data-lucide="users"></i><span>ターゲット</span></button>
+    <button class="mobile-nav-btn" data-section="solutions"><i data-lucide="lightbulb"></i><span>課題</span></button>
+    <button class="mobile-nav-btn" data-section="ux"><i data-lucide="smartphone"></i><span>UX</span></button>
+    <button class="mobile-nav-btn" data-section="kpi"><i data-lucide="bar-chart-2"></i><span>KPI</span></button>
+    <button class="mobile-nav-btn" data-section="roadmap"><i data-lucide="rocket"></i><span>ロードマップ</span></button>
+  </nav>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
